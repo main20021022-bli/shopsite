@@ -1,0 +1,4 @@
+cd "C:\お店Webサイト\shopsite"
+.\mvnw.cmd clean spring-boot:run
+
+http://localhost:8080/
