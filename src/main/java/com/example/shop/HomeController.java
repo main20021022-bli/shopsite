@@ -26,21 +26,19 @@ public class HomeController {
         return "register";
     }
 
-    @PostMapping("/register")
-    public String registerSubmit(@RequestParam String name,
-                                 @RequestParam String address,
-                                 @RequestParam String mapUrl,
-                                 Model model) {
-        // データベースに保存
-        Shop shop = new Shop();
-        shop.setName(name);
-        shop.setAddress(address);
-        shop.setMapUrl(mapUrl);
-        shopRepository.save(shop);
+   @PostMapping("/register")
+public String registerSubmit(@RequestParam String name,
+                             @RequestParam String address,
+                             @RequestParam String mapUrl) {
 
-        model.addAttribute("name", name);
-        model.addAttribute("address", address);
-        model.addAttribute("mapUrl", mapUrl);
-        return "registerResult";
-    }
+    Shop shop = new Shop();
+    shop.setName(name);
+    shop.setAddress(address);
+    shop.setMapUrl(mapUrl);
+
+    shopRepository.save(shop);
+
+    return "redirect:/";
+}
+
 }
