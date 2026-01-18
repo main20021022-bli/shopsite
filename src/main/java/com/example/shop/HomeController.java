@@ -17,7 +17,7 @@ public class HomeController {
 
     @GetMapping("/")
     public String index(Model model) {
-        model.addAttribute("shops", shopRepository.findAll());
+        model.addAttribute("shop", shopRepository.findAll());
         return "index";
     }
 
