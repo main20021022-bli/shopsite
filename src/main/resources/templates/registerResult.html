@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>登録結果</title>
+</head>
+<body>
+    <h1>登録内容の確認</h1>
+    <p>お店の名前: <b th:text="${name}"></b></p>
+    <p>住所: <b th:text="${address}"></b></p>
+    <p>Google Map: <a th:href="${mapUrl}" target="_blank">地図を見る</a></p>
+    <a href="/register">戻る</a>
+</body>
+</html>

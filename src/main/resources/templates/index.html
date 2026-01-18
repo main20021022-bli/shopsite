@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>ShopSite</title>
+</head>
+<body>
+    <h1>こんにちは、ShopSiteへようこそ！</h1>
+    <h2>登録済みのお店一覧</h2>
+    <ul>
+        <li th:each="shop : ${shops}">
+            <b th:text="${shop.name}"></b> - 
+            <span th:text="${shop.address}"></span> - 
+            <a th:href="${shop.mapUrl}" target="_blank">地図</a>
+        </li>
+    </ul>
+    <a href="/register">お店を登録する</a>
+</body>
+</html>
