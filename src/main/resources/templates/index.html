@@ -3,17 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <title>ShopSite</title>
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/sidebar.css">
 </head>
+
 <body>
-    <h1>こんにちは、ShopSiteへようこそ！</h1>
-    <h2>登録済みのお店一覧</h2>
-    <ul>
-        <li th:each="shop : ${shops}">
-            <b th:text="${shop.name}"></b> - 
-            <span th:text="${shop.address}"></span> - 
-            <a th:href="${shop.mapUrl}" target="_blank">地図</a>
-        </li>
-    </ul>
-    <a href="/register">お店を登録する</a>
+
+    <!-- ★ ヘッダー -->
+<header class="cute-header">
+    <div class="header-title">ShopSite</div>
+    <nav class="header-nav">
+        <a href="/" class="header-link">ホーム</a>
+        <a href="/register" class="header-link">登録</a>
+
+        <!-- ★ 開閉ボタン -->
+        <a class="header-link" onclick="toggleSidebar()">option</a>
+    </nav>
+</header>
+
+
+
+<div class="layout">
+
+
+ <main class="content">
+
+    <div class="shop-list">
+        <div th:each="shop : ${shops}">
+            
+            <div class="shop-info">
+
+            <h3 class="shop-name" th:text="${shop.name}"></h3>
+            <p class="shop-address" th:text="${shop.address}"></p>
+             <a class="map-link">地図を見る</a>
+
+            </div>
+
+            <!-- 画像（ある場合だけ） -->
+            <img th:if="${shop.imagePath}"
+                 th:src="${shop.imagePath}"
+                 alt="shop image"
+                 class="shop-image">
+
+            <div class="shop-info">
+                <a th:if="${shop.mapUrl}"
+                   th:href="${shop.mapUrl}"
+                   target="_blank"a>
+            </div>
+        </div>
+    </div>
+
+    <a href="/register" class="register-btn">お店を登録する</a>
+</main>
+
+<!-- ★ サイドバー -->
+    <aside class="sidebar" id="sidebar">
+        <br>
+        <br>
+        <a href="/" class="side-link">ホーム</a>
+        <a href="/register" class="side-link">お店を登録</a>
+        <a href="#" class="side-link">設定</a>
+    </aside>
+
+</div>
+
+<!-- ★ 開閉スクリプト -->
+<script>
+    function toggleSidebar() {
+        document.getElementById("sidebar").classList.toggle("open");
+    }
+</script>
+
 </body>
 </html>

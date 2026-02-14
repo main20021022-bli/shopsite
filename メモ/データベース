@@ -1,8 +1,16 @@
+DROP DATABASE shopsite_db;
+
+CREATE DATABASE shopsite_db;
 USE shopsite_db;
 
 CREATE TABLE shop (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
     address VARCHAR(255) NOT NULL,
-    map_url VARCHAR(500) NOT NULL
+    map_url VARCHAR(500) NULL,
+    image_path VARCHAR(500) NULL
 );
+
+ALTER TABLE shop
+ADD UNIQUE (name, address);
+

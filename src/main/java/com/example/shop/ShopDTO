@@ -1,0 +1,6 @@
+public class ShopDTO {
+    private String name;
+    private String address;
+    private String imagePath;
+    private boolean hasImage;
+}

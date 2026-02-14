@@ -3,15 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <title>お店登録フォーム</title>
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
+
+    <header class="cute-header">
+    <div class="header-title">ShopSite</div>
+    <nav class="header-nav">
+        <a href="/" class="header-link">ホーム</a>
+        <a href="/register" class="header-link">登録</a>
+    </nav>
+</header>
+
+
     <h1>お店を登録する</h1>
-    <form action="/register" method="post">
-        <label>お店の名前: <input type="text" name="name" required></label><br><br>
-        <label>住所: <input type="text" name="address" required></label><br><br>
-        <label>Google Map URL: <input type="text" name="mapUrl" required></label><br><br>
-        <button type="submit">登録</button>
-        <button type="button" onclick="location.href='/'">一覧に戻る</button>
-    </form>
+
+   <!-- ★ enctype を追加 -->
+<form action="/register" method="post" enctype="multipart/form-data">
+
+    <label>お店の名前: <input type="text" name="name" required></label><br><br>
+    <label>住所: <input type="text" name="address" required></label><br><br>
+    <label>Google Map URL: <input type="text" name="mapUrl" required></label><br><br>
+
+    <!-- ★ 写真アップロード欄 -->
+    <label>写真: <input type="file" name="image"></label><br><br>
+
+    <button type="submit">登録</button>
+    <br><br>
+    <a href="/">一覧に戻る</a>
+</form>
+
 </body>
 </html>

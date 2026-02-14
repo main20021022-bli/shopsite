@@ -1,4 +1,25 @@
 cd "C:\お店Webサイト\shopsite"
 .\mvnw.cmd clean spring-boot:run
 
-http://localhost:8080/
+start msedge http://localhost:8080/
+
+
+@echo off
+cd /d "C:\お店Webサイト\shopsite"
+
+echo 既存の Spring Boot を終了中...
+
+:: 8080番ポートを使用している PID を取得して kill
+for /f "tokens=5" %%a in ('netstat -ano ^| find ":8080"') do (
+    echo PID %%a を終了します...
+    taskkill /PID %%a /F >nul 2>&1
+)
+
+echo 起動します...
+
+:: Windows Terminal の新しいタブで Spring Boot を起動
+wt -w 0 nt -d . cmd /k ".\mvnw.cmd clean spring-boot:run"
+
+timeout /t 5 >nul
+start msedge http://localhost:8080/
+pause

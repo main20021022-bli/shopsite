@@ -1,0 +1,35 @@
+/* ヘッダー全体 */
+.cute-header {
+    background: #3b80e7;
+    padding: 15px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 4px solid #ff8fcf;
+}
+
+/* タイトル */
+.header-title {
+    margin: 100;
+    color: white;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+/* ナビゲーション */
+.header-nav {
+    display: flex;
+    gap: 20px;
+}
+
+/* リンク */
+.header-link {
+    color: rgb(150, 5, 5);
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+.header-link:hover {
+    opacity: 0.8;
+}

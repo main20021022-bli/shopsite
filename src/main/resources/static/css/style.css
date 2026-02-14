@@ -1,0 +1,72 @@
+body {
+    font-family: "Hiragino Maru Gothic ProN", "Yu Gothic", sans-serif;
+    background: #fff5f8;
+    padding: 40px;
+    color: #444;
+}
+
+h1 {
+    text-align: center;
+    color: #ff7fa8;
+    margin-bottom: 30px;
+}
+
+form {
+    background: #ffffff;
+    width: 400px;
+    margin: 0 auto;
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 4px 12px rgba(255, 150, 180, 0.3);
+}
+
+label {
+    display: block;
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #ffc7d9;
+    border-radius: 10px;
+    background: #fff0f6;
+    font-size: 14px;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background: #ff9ecb;
+    border: none;
+    border-radius: 15px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+button:hover {
+    background: #ff7fa8;
+}
+
+a {
+    display: block;
+    text-align: center;
+    margin-top: 15px;
+    color: #ff7fa8;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.shop-image {
+    width: 100%;      /* カード幅いっぱい */
+    height: 500px;    /* ← ここを好きな高さに変更 */
+    object-fit: cover;
+    border-radius: 0; /* 必要なら丸くできる */
+}
+
