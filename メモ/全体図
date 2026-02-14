@@ -1,0 +1,45 @@
+[ユーザー（ブラウザ）]
+        │
+        ▼ フォーム入力・送信
+[Controller] HomeController
+        │ 受け取り
+        ▼ DTOにマッピング
+[DTO] ShopDTO ← 画面専用、安全にデータを保持
+        │
+        ▼ ビジネス処理（必要ならService層で分離）
+[Service] ShopService（任意）
+        │
+        ▼ DTO → Entity変換
+[Entity] ShopEntity ← DB格納用
+        │
+        ▼ DAOでDB操作
+[DAO] ShopDAO → save/findAll/deleteById など
+        │
+        ▼ DBに保存 / 取得
+[DB] MySQL / PostgreSQL / H2
+        │
+        ▼ Entity → DTOに変換（画面用）
+[DTO] ShopDTO
+        │
+        ▼ Controller → Model に追加
+[Model] model.addAttribute("shop", shopDTO)
+        │
+        ▼ HTML / View で表示
+[View] registerResult.html / index.html
+        │
+        ▼ ユーザーに返す
+[ユーザー（ブラウザ）]
+
+
+| 層                       | クラス例                           | 役割                                    |
+| ----------------------- | ------------------------------ | ------------------------------------- |
+| **Controller層**         | `HomeController`               | リクエスト受け取り、DTO ↔ Entity 変換、Modelにデータ渡す |
+| **DTO層**                | `ShopDTO`                      | 画面とのデータ受け渡し、安全な箱                      |
+| **Entity層**             | `ShopEntity`                   | DB格納用データ                              |
+| **DAO層**                | `ShopDAO`                      | DB操作（CRUD）抽象化、JpaRepositoryで自動実装      |
+
+| **Service層（任意だが推奨）**    | `ShopService`                  | ビジネスロジック、画像保存やバリデーションをControllerから分離  |
+
+| **Model（Spring MVC用）**  | `Model`                        | Controller → Viewへのデータ橋渡し             |
+| **View層**               | `register.html` / `index.html` | ユーザーに表示するHTML、Thymeleafで安全に出力         |
+| **Utils / Helper層（任意）** | 例：`FileUploadUtils`            | 画像保存やファイル名生成など共通処理                    |

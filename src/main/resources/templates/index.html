@@ -11,69 +11,64 @@
 <body>
 
     <!-- ★ ヘッダー -->
-<header class="cute-header">
-    <div class="header-title">ShopSite</div>
-    <nav class="header-nav">
-        <a href="/" class="header-link">ホーム</a>
-        <a href="/register" class="header-link">登録</a>
+    <header class="cute-header">
+        <div class="header-title">ShopSite</div>
+        <nav class="header-nav">
+            <a href="/" class="header-link">ホーム</a>
+            <a href="/register" class="header-link">登録</a>
+            <a class="header-link" onclick="toggleSidebar()">option</a>
+        </nav>
+    </header>
 
-        <!-- ★ 開閉ボタン -->
-        <a class="header-link" onclick="toggleSidebar()">option</a>
-    </nav>
-</header>
+    <div class="layout">
 
+        <main class="content">
 
+            <div class="shop-list">
+                <div th:each="shop : ${shops}">
 
-<div class="layout">
+                    <div class="shop-info">
+                        <h3 class="shop-name" th:text="${shop.name}"></h3>
+                        <p class="shop-address" th:text="${shop.address}"></p>
+                    </div>
 
+                    <!-- 画像（ある場合だけ） -->
+                    <img th:if="${shop.hasImage}"
+                         th:src="${shop.imagePath}"
+                         alt="shop image"
+                         class="shop-image">
 
- <main class="content">
+                    <!-- 地図リンク（mapUrl がある場合だけ） -->
+                    <a th:if="${shop.mapUrl}"
+                       th:href="${shop.mapUrl}"
+                       target="_blank"
+                       class="map-link">
+                        地図を見る
+                    </a>
 
-    <div class="shop-list">
-        <div th:each="shop : ${shops}">
-            
-            <div class="shop-info">
-
-            <h3 class="shop-name" th:text="${shop.name}"></h3>
-            <p class="shop-address" th:text="${shop.address}"></p>
-             <a class="map-link">地図を見る</a>
-
+                </div>
             </div>
 
-            <!-- 画像（ある場合だけ） -->
-            <img th:if="${shop.imagePath}"
-                 th:src="${shop.imagePath}"
-                 alt="shop image"
-                 class="shop-image">
+            <a href="/register" class="register-btn">お店を登録する</a>
 
-            <div class="shop-info">
-                <a th:if="${shop.mapUrl}"
-                   th:href="${shop.mapUrl}"
-                   target="_blank"a>
-            </div>
-        </div>
+        </main>
+
+        <!-- ★ サイドバー -->
+        <aside class="sidebar" id="sidebar">
+            <br><br>
+            <a href="/" class="side-link">ホーム</a>
+            <a href="/register" class="side-link">お店を登録</a>
+            <a href="#" class="side-link">設定</a>
+        </aside>
+
     </div>
 
-    <a href="/register" class="register-btn">お店を登録する</a>
-</main>
-
-<!-- ★ サイドバー -->
-    <aside class="sidebar" id="sidebar">
-        <br>
-        <br>
-        <a href="/" class="side-link">ホーム</a>
-        <a href="/register" class="side-link">お店を登録</a>
-        <a href="#" class="side-link">設定</a>
-    </aside>
-
-</div>
-
-<!-- ★ 開閉スクリプト -->
-<script>
-    function toggleSidebar() {
-        document.getElementById("sidebar").classList.toggle("open");
-    }
-</script>
+    <!-- ★ 開閉スクリプト -->
+    <script>
+        function toggleSidebar() {
+            document.getElementById("sidebar").classList.toggle("open");
+        }
+    </script>
 
 </body>
 </html>
